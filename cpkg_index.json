@@ -228,6 +228,58 @@
       ]
     }
   ],
+  "Sensors": [
+    {
+      "path": "gyro/HWT101CT",
+      "name": "HWT101CT",
+      "pkgname": "SensorGyro::HWT101CT",
+      "version": "0.1.0",
+      "dependencies": [
+        "protocol::UartRxSync",
+        "utils"
+      ]
+    },
+    {
+      "path": "gyro/JY901S",
+      "name": "JY901S",
+      "pkgname": "SensorGyro::JY901S",
+      "version": "0.1.0",
+      "dependencies": [
+        "FreeRTOS",
+        "Math::Geometry",
+        "protocol::UartRxSync",
+        "utils"
+      ]
+    },
+    {
+      "path": "laser/dt35",
+      "name": "DT35",
+      "pkgname": "SensorLaser::DT35",
+      "version": "0.1.0",
+      "dependencies": [
+        "protocol::UartRxSync"
+      ]
+    },
+    {
+      "path": "laser/stp23l",
+      "name": "STP23L",
+      "pkgname": "SensorLaser::STP23L",
+      "version": "0.1.0",
+      "dependencies": [
+        "protocol::UartRxSync"
+      ]
+    },
+    {
+      "path": "ops/ActionOPS",
+      "name": "ActionOPS",
+      "pkgname": "SensorOPS::ActionOPS",
+      "version": "0.1.0",
+      "dependencies": [
+        "protocol::UartRxSync",
+        "FreeRTOS"
+      ]
+    }
+  ],
   "VelocityProfile": [
     {
       "path": "Core",
