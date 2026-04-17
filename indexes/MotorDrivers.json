@@ -1,0 +1,54 @@
+[
+  {
+    "path": "controllers",
+    "name": "Controller",
+    "pkgname": "MotorDrivers::Controller",
+    "version": "0.1.0",
+    "dependencies": [
+      "MotorDrivers::Core",
+      "libs::PIDMotor"
+    ]
+  },
+  {
+    "path": "core",
+    "name": "Core",
+    "pkgname": "MotorDrivers::Core",
+    "version": "0.1.0",
+    "dependencies": []
+  },
+  {
+    "path": "motors/DJI",
+    "name": "DJI",
+    "pkgname": "MotorDrivers::DJI",
+    "version": "0.1.0",
+    "dependencies": [
+      "MotorDrivers::Core",
+      "bsp::CANDriver",
+      "services::Watchdog"
+    ]
+  },
+  {
+    "path": "motors/DM",
+    "name": "DM",
+    "pkgname": "MotorDrivers::DM",
+    "version": "0.1.0",
+    "dependencies": [
+      "MotorDrivers::Core",
+      "bsp::CANDriver",
+      "services::Watchdog",
+      "libs::FixedMap"
+    ]
+  },
+  {
+    "path": "motors/VESC",
+    "name": "VESC",
+    "pkgname": "MotorDrivers::VESC",
+    "version": "0.1.0",
+    "dependencies": [
+      "MotorDrivers::Core",
+      "bsp::CANDriver",
+      "services::Watchdog",
+      "libs::FixedMap"
+    ]
+  }
+]
