@@ -1,0 +1,9 @@
+.codex
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.input
+.secrets
+.vars
+.actrc

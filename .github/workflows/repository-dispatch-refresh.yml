@@ -1,0 +1,117 @@
+name: Refresh cpkg index from repository dispatch
+
+on:
+  repository_dispatch:
+    types:
+      - cpkg-index-refresh
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cpkg-index-write
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout index repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Resolve payload
+        id: payload
+        env:
+          CURRENT_OWNER: ${{ github.repository_owner }}
+          PAYLOAD_REPO: ${{ github.event.client_payload.repo }}
+          PAYLOAD_CLONE_URL: ${{ github.event.client_payload.clone_url }}
+          PAYLOAD_SHA: ${{ github.event.client_payload.sha }}
+          PAYLOAD_REF: ${{ github.event.client_payload.ref }}
+        run: |
+          set -euo pipefail
+          if [ -z "${PAYLOAD_REPO}" ]; then
+            echo "client_payload.repo is required" >&2
+            exit 1
+          fi
+          if [ -n "${PAYLOAD_CLONE_URL}" ]; then
+            clone_url="${PAYLOAD_CLONE_URL}"
+          else
+            clone_url="https://github.com/${CURRENT_OWNER}/${PAYLOAD_REPO}.git"
+          fi
+          echo "repo=${PAYLOAD_REPO}" >> "${GITHUB_OUTPUT}"
+          echo "clone_url=${clone_url}" >> "${GITHUB_OUTPUT}"
+          echo "sha=${PAYLOAD_SHA}" >> "${GITHUB_OUTPUT}"
+          echo "ref=${PAYLOAD_REF}" >> "${GITHUB_OUTPUT}"
+
+      - name: Fetch target repository
+        env:
+          TARGET_REPO: ${{ steps.payload.outputs.repo }}
+          TARGET_CLONE_URL: ${{ steps.payload.outputs.clone_url }}
+          TARGET_SHA: ${{ steps.payload.outputs.sha }}
+          TARGET_REF: ${{ steps.payload.outputs.ref }}
+        run: |
+          set -euo pipefail
+          target_dir="${RUNNER_TEMP}/source-repo"
+          rm -rf "${target_dir}"
+          mkdir -p "${target_dir}"
+          git -C "${target_dir}" init
+          git -C "${target_dir}" remote add origin "${TARGET_CLONE_URL}"
+          if [ -n "${TARGET_SHA}" ]; then
+            git -C "${target_dir}" fetch --depth 1 origin "${TARGET_SHA}"
+          elif [ -n "${TARGET_REF}" ]; then
+            git -C "${target_dir}" fetch --depth 1 origin "${TARGET_REF}"
+          else
+            git -C "${target_dir}" fetch --depth 1 origin HEAD
+          fi
+          git -C "${target_dir}" checkout --detach FETCH_HEAD
+          printf 'source_dir=%s\n' "${target_dir}" >> "${GITHUB_ENV}"
+
+      - name: Regenerate repository index
+        env:
+          TARGET_REPO: ${{ steps.payload.outputs.repo }}
+        run: |
+          set -euo pipefail
+          python3 scripts/cpkg_index.py scan --repo "${TARGET_REPO}" --source-dir "${source_dir}"
+
+      - name: Detect index changes
+        id: changes
+        env:
+          TARGET_REPO: ${{ steps.payload.outputs.repo }}
+        run: |
+          set -euo pipefail
+          if [ -n "$(git status --porcelain -- cpkg_index.json "indexes/${TARGET_REPO}.json")" ]; then
+            echo "changed=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "changed=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Commit refreshed indexes
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          TARGET_REPO: ${{ steps.payload.outputs.repo }}
+          TARGET_SHA: ${{ steps.payload.outputs.sha }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cpkg_index.json "indexes/${TARGET_REPO}.json"
+          short_sha="${TARGET_SHA}"
+          if [ -n "${short_sha}" ]; then
+            short_sha="${short_sha:0:12}"
+            git commit -m "chore(index): refresh ${TARGET_REPO} @ ${short_sha}"
+          else
+            git commit -m "chore(index): refresh ${TARGET_REPO}"
+          fi
+          git push
+
+      - name: Report no-op refresh
+        if: steps.changes.outputs.changed != 'true'
+        run: echo "No index changes detected."

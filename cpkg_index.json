@@ -1,0 +1,145 @@
+{
+  "BasicComponents": [
+    {
+      "path": "bsp/can_driver",
+      "name": "CANDriver",
+      "pkgname": "bsp::CANDriver",
+      "version": "0.1.0",
+      "dependencies": [
+        "stm32cubemx",
+        "libs::RingBuffer",
+        "utils"
+      ]
+    },
+    {
+      "path": "bsp/gpio_driver",
+      "name": "GPIO_Driver",
+      "pkgname": "bsp::GPIO_Driver",
+      "version": "0.1.0",
+      "dependencies": [
+        "stm32cubemx"
+      ]
+    },
+    {
+      "path": "libs/concurrency",
+      "name": "Concurrency",
+      "pkgname": "libs::Concurrency",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "libs/control/mit_pd",
+      "name": "MIT_PD",
+      "pkgname": "libs::MIT_PD",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "libs/control/pid_motor",
+      "name": "PIDMotor",
+      "pkgname": "libs::PIDMotor",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "libs/control/pid_pd",
+      "name": "PID_PD",
+      "pkgname": "libs::PID_PD",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "libs/math/EKF",
+      "name": "EKF",
+      "pkgname": "Math::EKF",
+      "version": "0.1.0",
+      "dependencies": [
+        "Math::LinearAlgebra"
+      ]
+    },
+    {
+      "path": "libs/math/Geometry",
+      "name": "Geometry",
+      "pkgname": "Math::Geometry",
+      "version": "0.1.0",
+      "dependencies": [
+        "Math::LinearAlgebra"
+      ]
+    },
+    {
+      "path": "libs/math/LinearAlgebra",
+      "name": "LinearAlgebra",
+      "pkgname": "Math::LinearAlgebra",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "libs/traits",
+      "name": "traits",
+      "pkgname": "traits",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "libs/utils/crc",
+      "name": "CRC",
+      "pkgname": "libs::CRC",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "libs/utils/deque",
+      "name": "Deque",
+      "pkgname": "libs::Deque",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "libs/utils/fixed_map",
+      "name": "FixedMap",
+      "pkgname": "libs::FixedMap",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "libs/utils/printf",
+      "name": "printf",
+      "pkgname": "libs::printf",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "libs/utils/ring_buffer",
+      "name": "RingBuffer",
+      "pkgname": "libs::RingBuffer",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "protocol/UartRxSync",
+      "name": "UartRxSync",
+      "pkgname": "protocol::UartRxSync",
+      "version": "0.1.0",
+      "dependencies": [
+        "stm32cubemx",
+        "services::Watchdog"
+      ]
+    },
+    {
+      "path": "services/watchdog",
+      "name": "Watchdog",
+      "pkgname": "services::Watchdog",
+      "version": "0.1.0",
+      "dependencies": []
+    },
+    {
+      "path": "utils",
+      "name": "utils",
+      "pkgname": "utils",
+      "version": "0.1.0",
+      "dependencies": [
+        "stm32cubemx"
+      ]
+    }
+  ]
+}

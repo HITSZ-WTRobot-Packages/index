@@ -1,0 +1,55 @@
+name: Full refresh cpkg indexes
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cpkg-index-write
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout index repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Refresh all known repositories
+        run: |
+          set -euo pipefail
+          python3 scripts/cpkg_index.py full-refresh --org "${{ github.repository_owner }}"
+
+      - name: Detect full refresh changes
+        id: changes
+        run: |
+          set -euo pipefail
+          if [ -n "$(git status --porcelain -- cpkg_index.json indexes)" ]; then
+            echo "changed=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "changed=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Commit refreshed indexes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cpkg_index.json indexes
+          git commit -m "chore(index): full refresh"
+          git push
+
+      - name: Report no-op refresh
+        if: steps.changes.outputs.changed != 'true'
+        run: echo "No index changes detected."
