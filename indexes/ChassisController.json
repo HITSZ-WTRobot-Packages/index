@@ -1,0 +1,86 @@
+[
+  {
+    "path": "Chassis/Mecanum4",
+    "name": "Mecanum4",
+    "pkgname": "Chassis::Mecanum4",
+    "version": "0.1.0",
+    "dependencies": [
+      "Chassis::Core",
+      "FreeRTOS"
+    ]
+  },
+  {
+    "path": "Chassis/Omni4",
+    "name": "Omni4",
+    "pkgname": "Chassis::Omni4",
+    "version": "0.1.0",
+    "dependencies": [
+      "Chassis::Core",
+      "FreeRTOS"
+    ]
+  },
+  {
+    "path": "Chassis/Steering4",
+    "name": "Steering4",
+    "pkgname": "Chassis::Steering4",
+    "version": "0.1.0",
+    "dependencies": [
+      "Chassis::Core",
+      "FreeRTOS",
+      "bsp::GPIO_Driver"
+    ]
+  },
+  {
+    "path": "Controller/Master",
+    "name": "ControllerMaster",
+    "pkgname": "Chassis::ControllerMaster",
+    "version": "0.1.0",
+    "dependencies": [
+      "Chassis::Core",
+      "VelocityProfile::SCurve"
+    ]
+  },
+  {
+    "path": "Controller/Slave",
+    "name": "ControllerSlave",
+    "pkgname": "Chassis::ControllerSlave",
+    "version": "0.1.0",
+    "dependencies": [
+      "Chassis::Core",
+      "libs::RingBuffer"
+    ]
+  },
+  {
+    "path": "Core",
+    "name": "Core",
+    "pkgname": "Chassis::Core",
+    "version": "0.1.0",
+    "dependencies": [
+      "FreeRTOS",
+      "libs::MIT_PD",
+      "MotorDrivers::Controller"
+    ]
+  },
+  {
+    "path": "Localization/EKF",
+    "name": "EKF",
+    "pkgname": "ChassisLocalization::EKF",
+    "version": "0.1.0",
+    "dependencies": [
+      "Chassis::Core",
+      "SensorGyro::HWT101CT",
+      "Math::EKF",
+      "libs::Deque",
+      "libs::Concurrency"
+    ]
+  },
+  {
+    "path": "Localization/JustEncoder",
+    "name": "JustEncoder",
+    "pkgname": "ChassisLocalization::JustEncoder",
+    "version": "0.1.0",
+    "dependencies": [
+      "Chassis::Core"
+    ]
+  }
+]
