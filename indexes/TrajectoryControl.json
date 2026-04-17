@@ -1,5 +1,16 @@
 [
   {
+    "path": "HomingMotorTrajectory",
+    "name": "HomingMotorTrajectory",
+    "pkgname": "Trajectory::HomingMotorTrajectory",
+    "version": null,
+    "dependencies": [
+      "MotorDrivers::Controller",
+      "Trajectory::MotorTrajectory",
+      "stm32cubemx"
+    ]
+  },
+  {
     "path": "MotorTrajectory",
     "name": "MotorTrajectory",
     "pkgname": "Trajectory::MotorTrajectory",
