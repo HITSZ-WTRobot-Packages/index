@@ -339,7 +339,7 @@
       "path": "HomingMotorTrajectory",
       "name": "HomingMotorTrajectory",
       "pkgname": "Trajectory::HomingMotorTrajectory",
-      "version": null,
+      "version": "0.1.0",
       "dependencies": [
         "MotorDrivers::Controller",
         "Trajectory::MotorTrajectory",
