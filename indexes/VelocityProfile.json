@@ -1,0 +1,18 @@
+[
+  {
+    "path": "Core",
+    "name": "Core",
+    "pkgname": "VelocityProfile::Core",
+    "version": "0.1.0",
+    "dependencies": []
+  },
+  {
+    "path": "SCurve",
+    "name": "SCurve",
+    "pkgname": "VelocityProfile::SCurve",
+    "version": "0.1.0",
+    "dependencies": [
+      "VelocityProfile::Core"
+    ]
+  }
+]
