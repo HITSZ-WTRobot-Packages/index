@@ -18,6 +18,7 @@
 - The primary inbound automation event is `repository_dispatch` with `event_type` set to `cpkg-index-refresh`.
 - Downstream package repositories should send custom payload fields that identify the repository and Git ref or SHA being refreshed.
 - Use the current repository owner / organization name in scripts and workflows; do not hardcode the org name.
+- Refresh workflows should check out the current target branch tip instead of the event SHA so queued runs can still fast-forward push.
 - Keep the full-refresh workflow manual-only unless the requirement changes.
 
 ## Change Management

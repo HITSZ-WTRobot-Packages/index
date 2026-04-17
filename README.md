@@ -77,4 +77,5 @@ The inbound dispatch workflow expects `event_type` to be `cpkg-index-refresh` an
 ## Commit behavior
 
 - If generated indexes do not change tracked files, the workflow exits without creating a commit.
-- If generated indexes change, the workflow commits only the relevant index files and pushes them back to this repository.
+- If generated indexes change, the workflow commits only the relevant index files and pushes them back to the checked-out index branch.
+- Refresh workflows explicitly check out the current branch tip when the job starts so queued runs do not push from a stale commit.

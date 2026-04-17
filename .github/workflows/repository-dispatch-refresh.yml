@@ -16,11 +16,14 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      INDEX_BRANCH: ${{ github.event.repository.default_branch }}
     steps:
       - name: Checkout index repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ env.INDEX_BRANCH }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -96,6 +99,7 @@ jobs:
       - name: Commit refreshed indexes
         if: steps.changes.outputs.changed == 'true'
         env:
+          INDEX_BRANCH: ${{ env.INDEX_BRANCH }}
           TARGET_REPO: ${{ steps.payload.outputs.repo }}
           TARGET_SHA: ${{ steps.payload.outputs.sha }}
         run: |
@@ -110,7 +114,7 @@ jobs:
           else
             git commit -m "chore(index): refresh ${TARGET_REPO}"
           fi
-          git push
+          git push origin "HEAD:${INDEX_BRANCH}"
 
       - name: Report no-op refresh
         if: steps.changes.outputs.changed != 'true'
