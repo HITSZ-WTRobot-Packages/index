@@ -21,6 +21,15 @@
       ]
     },
     {
+      "path": "bsp/i2c_driver",
+      "name": "I2CDriver",
+      "pkgname": "bsp::I2CDriver",
+      "version": "0.1.0",
+      "dependencies": [
+        "stm32cubemx"
+      ]
+    },
+    {
       "path": "libs/concurrency",
       "name": "Concurrency",
       "pkgname": "libs::Concurrency",
@@ -123,6 +132,16 @@
       "dependencies": [
         "stm32cubemx",
         "services::Watchdog"
+      ]
+    },
+    {
+      "path": "services/i2c_update_manager",
+      "name": "I2CUpdateManager",
+      "pkgname": "services::I2CUpdateManager",
+      "version": "0.1.0",
+      "dependencies": [
+        "bsp::I2CDriver",
+        "stm32cubemx"
       ]
     },
     {
