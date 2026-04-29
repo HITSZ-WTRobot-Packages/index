@@ -48,5 +48,15 @@
       "protocol::UartRxSync",
       "FreeRTOS"
     ]
+  },
+  {
+    "path": "pressure/XGZP6847D",
+    "name": "XGZP6847D",
+    "pkgname": "SensorPressure::XGZP6847D",
+    "version": "0.1.0",
+    "dependencies": [
+      "services::I2CUpdateManager",
+      "stm32cubemx"
+    ]
   }
 ]
