@@ -40,6 +40,17 @@
     ]
   },
   {
+    "path": "motors/MI",
+    "name": "MIMotor",
+    "pkgname": "MotorDrivers::MIMotor",
+    "version": "0.2.0",
+    "dependencies": [
+      "MotorDrivers::Core",
+      "services::Watchdog",
+      "libs::FixedMap"
+    ]
+  },
+  {
     "path": "motors/VESC",
     "name": "VESC",
     "pkgname": "MotorDrivers::VESC",
