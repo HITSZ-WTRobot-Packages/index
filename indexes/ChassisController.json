@@ -37,7 +37,8 @@
     "version": "0.1.0",
     "dependencies": [
       "Chassis::Core",
-      "VelocityProfile::SCurve"
+      "VelocityProfile::SCurve",
+      "libs::PID_PD"
     ]
   },
   {
@@ -47,6 +48,7 @@
     "version": "0.1.0",
     "dependencies": [
       "Chassis::Core",
+      "libs::MIT_PD",
       "libs::RingBuffer"
     ]
   },
@@ -57,7 +59,6 @@
     "version": "0.1.0",
     "dependencies": [
       "FreeRTOS",
-      "libs::MIT_PD",
       "MotorDrivers::Controller"
     ]
   },
