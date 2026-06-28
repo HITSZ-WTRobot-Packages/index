@@ -48,7 +48,7 @@
     "version": "0.1.0",
     "dependencies": [
       "Chassis::Core",
-      "libs::MIT_PD",
+      "libs::PID_PD",
       "libs::RingBuffer"
     ]
   },
