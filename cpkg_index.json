@@ -152,7 +152,8 @@
       "version": "0.1.0",
       "dependencies": [
         "stm32cubemx",
-        "services::Watchdog"
+        "services::Watchdog",
+        "memory::DMABuffer"
       ]
     },
     {
