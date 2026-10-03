@@ -124,6 +124,13 @@
     "dependencies": []
   },
   {
+    "path": "memory/DMABuffer",
+    "name": "DMABuffer",
+    "pkgname": "memory::DMABuffer",
+    "version": "0.1.0",
+    "dependencies": []
+  },
+  {
     "path": "memory/StaticArena",
     "name": "StaticArena",
     "pkgname": "memory::StaticArena",
