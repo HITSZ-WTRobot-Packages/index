@@ -11,6 +11,34 @@
     ]
   },
   {
+    "path": "bsp/ethernet/core",
+    "name": "EthernetPHYCore",
+    "pkgname": "EthernetPHY::Core",
+    "version": "0.1.0",
+    "dependencies": []
+  },
+  {
+    "path": "bsp/ethernet/lwip_platform",
+    "name": "LwipPlatform",
+    "pkgname": "EthernetPHY::LwipPlatform",
+    "version": "0.1.0",
+    "dependencies": [
+      "EthernetPHY::Core",
+      "FreeRTOS",
+      "stm32cubemx"
+    ]
+  },
+  {
+    "path": "bsp/ethernet/phy_drivers/dp83822",
+    "name": "DP83822",
+    "pkgname": "EthernetPHY::DP83822",
+    "version": "0.1.0",
+    "dependencies": [
+      "EthernetPHY::Core",
+      "stm32cubemx"
+    ]
+  },
+  {
     "path": "bsp/gpio_driver",
     "name": "GPIO_Driver",
     "pkgname": "bsp::GPIO_Driver",
