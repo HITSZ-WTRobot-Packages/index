@@ -25,6 +25,19 @@
     "dependencies": [
       "EthernetPHY::Core",
       "FreeRTOS",
+      "LwIP",
+      "stm32cubemx"
+    ]
+  },
+  {
+    "path": "bsp/ethernet/net/udp_socket",
+    "name": "LwipPlatform",
+    "pkgname": "Ethernet::UdpSocket",
+    "version": "0.1.0",
+    "dependencies": [
+      "EthernetPHY::Core",
+      "FreeRTOS",
+      "LwIP",
       "stm32cubemx"
     ]
   },
