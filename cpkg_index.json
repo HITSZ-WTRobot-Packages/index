@@ -32,7 +32,7 @@
     },
     {
       "path": "bsp/ethernet/net/udp_socket",
-      "name": "LwipPlatform",
+      "name": "UdpSocket",
       "pkgname": "Ethernet::UdpSocket",
       "version": "0.1.0",
       "dependencies": [
@@ -49,7 +49,8 @@
       "version": "0.1.0",
       "dependencies": [
         "EthernetPHY::Core",
-        "stm32cubemx"
+        "stm32cubemx",
+        "bsp::GPIO_Driver"
       ]
     },
     {
