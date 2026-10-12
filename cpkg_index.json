@@ -12,6 +12,17 @@
       ]
     },
     {
+      "path": "bsp/can_driver2",
+      "name": "CANDriver2",
+      "pkgname": "bsp::CANDriver2",
+      "version": "0.1.0",
+      "dependencies": [
+        "stm32cubemx",
+        "libs::RingBuffer",
+        "utils"
+      ]
+    },
+    {
       "path": "bsp/ethernet/core",
       "name": "EthernetPHYCore",
       "pkgname": "EthernetPHY::Core",
