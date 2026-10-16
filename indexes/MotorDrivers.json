@@ -1,8 +1,28 @@
 [
   {
+    "path": "controllers/_",
+    "name": "Controller",
+    "pkgname": "MotorDrivers::Controller",
+    "version": "0.1.0",
+    "dependencies": [
+      "MotorController::VelController",
+      "MotorController::PosController"
+    ]
+  },
+  {
     "path": "controllers/pos_controller",
     "name": "PosController",
     "pkgname": "MotorController::PosController",
+    "version": "0.1.0",
+    "dependencies": [
+      "MotorDrivers::Core",
+      "libs::PIDMotor"
+    ]
+  },
+  {
+    "path": "controllers/vel_controller",
+    "name": "VelController",
+    "pkgname": "MotorController::VelController",
     "version": "0.1.0",
     "dependencies": [
       "MotorDrivers::Core",
