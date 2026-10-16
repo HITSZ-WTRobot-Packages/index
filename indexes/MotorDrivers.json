@@ -1,8 +1,8 @@
 [
   {
-    "path": "controllers",
-    "name": "Controller",
-    "pkgname": "MotorDrivers::Controller",
+    "path": "controllers/pos_controller",
+    "name": "PosController",
+    "pkgname": "MotorController::PosController",
     "version": "0.1.0",
     "dependencies": [
       "MotorDrivers::Core",
