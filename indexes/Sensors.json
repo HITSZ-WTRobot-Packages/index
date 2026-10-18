@@ -40,6 +40,16 @@
     ]
   },
   {
+    "path": "led/ws2812",
+    "name": "WS2812B",
+    "pkgname": "SensorLed::WS2812B",
+    "version": "0.1.0",
+    "dependencies": [
+      "memory::DMABuffer",
+      "stm32cubemx"
+    ]
+  },
+  {
     "path": "ops/ActionOPS",
     "name": "ActionOPS",
     "pkgname": "SensorOPS::ActionOPS",
