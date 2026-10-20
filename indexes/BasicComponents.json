@@ -1,5 +1,15 @@
 [
   {
+    "path": "bsp/button",
+    "name": "Button",
+    "pkgname": "bsp::Button",
+    "version": "0.1.0",
+    "dependencies": [
+      "stm32cubemx",
+      "bsp::GPIO_Driver"
+    ]
+  },
+  {
     "path": "bsp/can_driver",
     "name": "CANDriver",
     "pkgname": "bsp::CANDriver",
