@@ -6,7 +6,18 @@
     "version": "0.1.0",
     "dependencies": [
       "MotorController::VelController",
-      "MotorController::PosController"
+      "MotorController::PosController",
+      "MotorController::MITController"
+    ]
+  },
+  {
+    "path": "controllers/mit_controller",
+    "name": "MITController",
+    "pkgname": "MotorController::MITController",
+    "version": "0.1.0",
+    "dependencies": [
+      "MotorDrivers::Core",
+      "libs::MIT_PD"
     ]
   },
   {
