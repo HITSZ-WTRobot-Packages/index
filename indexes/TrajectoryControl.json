@@ -11,6 +11,18 @@
     ]
   },
   {
+    "path": "MITTrajectory",
+    "name": "MITTrajectory",
+    "pkgname": "Trajectory::MITTrajectory",
+    "version": "0.1.0",
+    "dependencies": [
+      "MotorDrivers::Controller",
+      "VelocityProfile::SCurve",
+      "libs::MIT_PD",
+      "utils"
+    ]
+  },
+  {
     "path": "MotorTrajectory",
     "name": "MotorTrajectory",
     "pkgname": "Trajectory::MotorTrajectory",
